@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"ec2_sg","Source":"/home/ec2-user/lamp-terraform/modules/aws-sgs","Dir":".terraform/modules/ec2_sg"},{"Key":"elb_sg","Source":"/home/ec2-user/lamp-terraform/modules/aws-sgs","Dir":".terraform/modules/elb_sg"},{"Key":"mysql_db","Source":"/home/ec2-user/lamp-terraform/modules/datebases","Dir":".terraform/modules/mysql_db"}]}

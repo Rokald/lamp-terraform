@@ -4,48 +4,48 @@ provider "aws" {
 }
 
 module "ec2_sg" {
-  source = "/home/centos/terraform/lamp/modules/aws-sgs"
+  source = "/home/ec2-user/lamp-terraform/modules/aws-sgs"
   sg_name = "ec2_sg"
 }
 
 module "elb_sg" {
-  source = "/home/centos/terraform/lamp/modules/aws-sgs"
+  source = "/home/ec2-user/lamp-terraform/modules/aws-sgs"
   sg_name = "elb_sg"
 }
 
-module "mysql_db" {
-  source = "/home/centos/terraform/lamp/modules/datebases"
-}
+#module "mysql_db" {
+#  source = "/home/ec2-user/lamp-terraform/modules/datebases"
+#}
 
 resource "aws_instance" "qa_app" {
   ami           = "${var.ami}"
   instance_type = "t2.micro"
-  key_name = "${var.private_key}"
+#  key_name = "LAMP.pem"
   subnet_id = "${var.subnet_id}"
   vpc_security_group_ids = ["${module.ec2_sg.sg_id}"]
-  provisioner "remote-exec" {  
-
-    inline = [
-      "sudo yum install httpd -y",
-      "sudo service httpd start",
-      "sudo chown centos:centos /var/www/html/"
-    ]
-    connection = {
-      type = "ssh"
-      user = "centos"
-      private_key = "${file("${var.private_key_path}")}"
-  }
- }
-  provisioner "file" {
-    source = "files/index.html"
-    destination = "/var/www/html/index.html"
-    
-    connection = {
-     type = "ssh"
-     user = "centos"
-     private_key = "${file("${var.private_key_path}")}"
-  }
- }
+#  provisioner "remote-exec" {  
+#
+#   inline = [
+#      "sudo yum install httpd -y",
+#      "sudo service httpd start",
+#      "sudo chown ec2-user:ec2-user /var/www/html/"
+#  An argument named "connection" is not expected here.  ]
+#    connection = {
+#      type = "ssh"
+#      user = "ec2-user"
+#      private_key = "${file("${var.private_key_path}")}"
+#  }
+# }
+#  provisioner "file" {
+#    source = "files/index.html"
+#    destination = "/var/www/html/index.html"
+#    
+#    connection = {
+#     type = "ssh"
+#     user = "ec2-user"
+#     private_key = "${file("${var.private_key_path}")}"
+#  }
+# }
 }
 
 resource "aws_elb" "qa_elb" {

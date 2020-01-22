@@ -9,6 +9,6 @@ variable "sg_name" {
 
 variable "vpc_id" {
   description = "VPC ID"
-  default = "vpc-5035122a"
+  default = "vpc-36c0f850"
 }
 

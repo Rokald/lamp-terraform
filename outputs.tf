@@ -8,7 +8,7 @@ output "elb_name" {
   description = "ELB DNS name"
 }
 
-output "db_endpoint" {
-  value = "${aws_db_instance.mysql_db.endpoint}"
-}
+#output "db_endpoint" {
+#  value = "${aws_db_instance.mysql_db.endpoint}"
+#}
 

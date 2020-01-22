@@ -1,6 +1,6 @@
 variable "subnet_id" {
   description = "Thisi is the desired subnet ID"
-  default = "subnet-957609a9"
+  default = "subnet-185f8455"
 }
 
 variable "aws_security_group" {
@@ -25,10 +25,10 @@ variable "ami" {
 
 variable "private_key" {
   description = "Private key"
-  default = "opsbox19"
+  default = "LAMP.pem"
 }
 
 variable "private_key_path" {
   description = ""
-  default = "/home/centos/terraform/ec2/keys/opsbox19.pem"
+  default = "LAMP.pem"
 }
